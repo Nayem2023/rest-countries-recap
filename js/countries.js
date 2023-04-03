@@ -6,20 +6,45 @@ const loadCountries = () =>{
 
 const displayCountries = countries =>{
     // console.log(countries[0].capital);
-const countriesHTML = countries.map(country => getCountriesHTML(country));
-    console.log(countriesHTML);
+const countriesHTML = countries.map(country => getCountryHTML(country));
+    // console.log(countriesHTML);
     const container = document.getElementById('countries');
     container.innerHTML = countriesHTML.join('');
 
 }
 
-const getCountriesHTML = country =>{
+// // option 3
+const getCountryHTML = ({name, flags, area, region}) =>{
     return `
-    <div class="country">
-        <h2>${country.name.common}</h2>
-        <img src="${country.flags.png}" >
-    </div>
+        <div class="country">
+            <h2>${name.common}</h2>
+            <p>Area: ${area}</p>
+            <p>Continet: ${region}</p>
+            <img src="${flags.png}">
+        </div>
     `
 }
+
+// option 2
+// const getCountryHTML = country =>{
+//     // option 1
+//     const {name, flags} = country;
+//     return `
+//         <div class="country">
+//             <h2>${name.common}</h2>
+//             <img src="${flags.png}">
+//         </div>
+//     `
+// }
+
+// option 1
+// const getCountryHTML = country =>{
+//     return `
+//         <div class="country">
+//             <h2>${country.name.common}</h2>
+//             <img src="${country.flags.png}">
+//         </div>
+//     `
+// }
 
 loadCountries();
